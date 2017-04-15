@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Web;
+
+namespace OnlineWhiteBoard
+{
+    [DataContract]
+    public class BoardSnapshot
+    {
+        [DataMember(Name = "textEntities")]
+        public IReadOnlyList<TextEntity> TextEntities { get; private set; }
+
+        [DataMember(Name = "events")]
+        public IReadOnlyList<ClientDrawEvent> Events { get; private set; }
+
+        [DataMember(Name = "neighbors")]
+        public IReadOnlyList<string> Neighbors { get; private set; }
+
+        [DataMember(Name = "messages")]
+        public IReadOnlyList<Message> Messages { get; private set; }
+
+        public BoardSnapshot(Board board)
+        {
+            var entities = board.Entities;
+
+            this.TextEntities = entities.Where(a => a is TextEntity).Select(a => a as TextEntity).ToList();
+            this.Events = board.Events;
+            this.Neighbors = UserManager.GetUserIds(board.Id).ToList();
+            this.Messages = board.Messages;
+        }
+    }
+}

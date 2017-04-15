@@ -1,0 +1,57 @@
+﻿@import "app.less";
+
+* {
+    outline: none;
+}
+
+div.page {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.modal-content {
+    border-radius: 0px;
+}
+
+input[type=text], input[type=password] {
+    border-radius: 0px;
+}
+
+.modal {
+    overflow: auto;
+
+    &.fade .modal-dialog {
+        -webkit-transform: translate(0, 0);
+        transition: none;
+    }
+
+    &.in .modal-dialog {
+        -webkit-transform: translate(0, 0);
+    }
+}
+
+body.modal-open {
+    margin-right: 0px !important;
+
+    .navbar {
+        margin-right: 0px !important;
+    }
+}
+
+.form-group > label {
+    font-size: 10pt !important;
+}
+
+.modal-header, .modal-footer, .modal-title {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    font-family: 'Droid Sans', sans-serif;
+}
+
+.modal label {
+    font-family: 'Droid Sans', sans-serif;
+}

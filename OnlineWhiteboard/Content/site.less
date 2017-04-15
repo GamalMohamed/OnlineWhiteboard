@@ -1,0 +1,195 @@
+﻿.page {
+    .modal-body {
+        margin-bottom: 20px;
+    }
+}
+
+#password.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #71bade;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    #hiddenIdInput {
+        display: none;
+    }
+
+    #passwordFormContainer {
+        width: 500px;
+    }
+}
+
+#index.page {
+    overflow-x: hidden;
+
+    @createWidth: 150px;
+    @createHeight: 35px;
+
+    #createContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #titleItems {
+        width: auto;
+        height: auto;
+        margin-top: -200px;
+    }
+
+    #title {
+        font-size: 50pt;
+        width: 100%;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        color: #054B69;
+    }
+
+    #pageBackground {
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+
+    #buttonContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .indexButton {
+        font-family: 'Roboto', sans-serif;
+        font-size: 12pt;
+    }
+
+    #createBoardForm {
+        float: left;
+        width: @createWidth;
+        height: @createHeight;
+    }
+
+    #submitCreate {
+        width: @createWidth;
+        height: @createHeight;
+        .indexButton;
+    }
+
+    #moreInfo {
+        float: left;
+        width: @createWidth;
+        height: @createHeight;
+        margin-left: 15px;
+        .indexButton;
+    }
+
+
+    .checkbox {
+        visibility: hidden;
+        margin-left: -10000px !important;
+        position: absolute;
+    }
+
+    .checkbox + label, .checkLabel {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    input.checkbox + label {
+        width: 120px;
+        height: 30px;
+        box-sizing: border-box;
+        line-height: 1.5;
+    }
+
+    input.checkbox + label:before, input.checkbox + label:after {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        content: "";
+    }
+
+    input.checkbox + label:after {
+        width: 60px;
+        background-color: #EEE;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        transition: margin 0.3s;
+    }
+
+    input.checkbox:checked + label:after {
+        margin-left: 60px;
+    }
+
+    .nocheck {
+        background-color: #C2C2C2;
+        color: #5E5E5E;
+    }
+
+    .yescheck {
+        background-color: #009FE3;
+        color: #054B69;
+    }
+
+    .checktext {
+        box-sizing: border-box;
+        width: 50%;
+        float: left;
+        height: 100%;
+        text-align: center;
+    }
+
+    .checktext .fa {
+        font-size: 15pt;
+        margin-top: 5px;
+    }
+}
+
+#about.page, #help.page {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14pt;
+    overflow-x: hidden;
+
+    h1 {
+        font-size: 50px;
+        width: 100%;
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    #navBar {
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 50px;
+        padding: 7px;
+    }
+
+    #content {
+        position: absolute;
+        left: 50%;
+        margin-left: -400px;
+        width: 800px;
+        padding: 20px;
+        padding-bottom: 50px;
+    }
+}
