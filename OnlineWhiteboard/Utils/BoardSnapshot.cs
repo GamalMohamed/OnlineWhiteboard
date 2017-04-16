@@ -25,7 +25,7 @@ namespace OnlineWhiteBoard
         {
             var entities = board.Entities;
 
-            this.TextEntities = entities.Where(a => a is TextEntity).Select(a => a as TextEntity).ToList();
+            this.TextEntities = entities.OfType<TextEntity>().ToList();
             this.Events = board.Events;
             this.Neighbors = UserManager.GetUserIds(board.Id).ToList();
             this.Messages = board.Messages;

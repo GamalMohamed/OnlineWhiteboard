@@ -59,7 +59,7 @@ namespace OnlineWhiteBoard
             return list[randomIndex];
         }
 
-        public static string ToRGBString(this Color color)
+        public static string ToRgbString(this Color color)
         {
             return "#" + color.R.ToString("x2") + color.G.ToString("x2") + color.B.ToString("x2");
         }

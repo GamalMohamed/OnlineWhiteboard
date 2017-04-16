@@ -41,7 +41,7 @@ namespace OnlineWhiteBoard.Controllers
 
         [Route("Sheet/Create")]
         [HttpPost]
-        public ActionResult NewBoard([Bind(Include = "Title,Password,PasswordEnabled,PasswordRepeat")]BoardModel model)
+        public ActionResult NewBoard([Bind(Include = "Title")]BoardModel model)
         {
             if (ModelState.IsValid)
             {

@@ -49,7 +49,7 @@ namespace OnlineWhiteBoard
 
         public static Board GetBoard(string boardId)
         {
-            return boards.Where(a => a.Id == boardId).FirstOrDefault();
+            return boards.FirstOrDefault(a => a.Id == boardId);
         }
 
         public static bool BoardExists(string boardId)

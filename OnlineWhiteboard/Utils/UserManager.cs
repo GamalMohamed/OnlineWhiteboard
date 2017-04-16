@@ -22,24 +22,24 @@ namespace OnlineWhiteBoard
 
         public static User GetUserBySession(string sessionId)
         {
-            return GetAllUsers().Where(a => a.SessionId == sessionId).FirstOrDefault();
+            return GetAllUsers().FirstOrDefault(a => a.SessionId == sessionId);
         }
 
         public static User GetUserByConnection(string connectionId)
         {
-            return GetAllUsers().Where(a => a.HasConnection(connectionId)).FirstOrDefault();
+            return GetAllUsers().FirstOrDefault(a => a.HasConnection(connectionId));
         }
 
         public static User GetUserById(string userId)
         {
-            return GetAllUsers().Where(a => a.Id == userId).FirstOrDefault();
+            return GetAllUsers().FirstOrDefault(a => a.Id == userId);
         }
 
         public static bool IsUserOnBoard(string userId, string boardId)
         {
             if (users.ContainsKey(boardId))
             {
-                return users[boardId].Where(a => a.Id == userId).Count() > 0;
+                return users[boardId].Any(a => a.Id == userId);
             }
 
             return false;
@@ -103,7 +103,7 @@ namespace OnlineWhiteBoard
             int amountOfNeighbors = neighbors.Count;
             string name = "User " + amountOfNeighbors;
 
-            while (neighbors.Where(a => a.DisplayName == (name = "User " + amountOfNeighbors)).Any())
+            while (neighbors.Any(a => a.DisplayName == (name = "User " + amountOfNeighbors)))
             {
                 amountOfNeighbors++;
             }
