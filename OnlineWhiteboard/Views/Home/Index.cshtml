@@ -1,7 +1,67 @@
 ﻿@{
     ViewBag.Title = "Home";
 }
-<div id="index" class="page">
-    <div id="pageBackground" style="background-image:url(/Content/images/background.jpg)"></div>
-    @Html.Partial("BoardCreationPartial")
-</div>
+
+<link href="/Content/grayscale.less" rel="stylesheet">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand page-scroll" href="#about">
+                    <i class="fa fa-play-circle"></i><span class="light">DrawBoard</span>
+                </a>
+            </div>
+
+            <!-- Scrolling Tags -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden"><a href="#page-top"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">DrawBoard</h1>
+                        <p class="intro-text">An online Shared whiteboard application</p>
+                        <form action="/Sheet/Create" method="post">
+                            <button id="createBoardbutton" type="submit" class="btn btn-primary btn-lg">Start a drawing room</button>
+                        </form>
+                        <br />
+                        <br />
+                        <p class="intro-text">Or Join an existing one</p>
+                        <form id="regexpForm" class="form-horizontal">
+                            <input id="myURL" class="form-control input-sm roundbox20" type="text" placeholder="Enter board URL" name="url" />
+                            <br />
+                            <button id="joinBoardbutton" type="button" class="btn btn-primary btn-lg">Join room</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <footer>
+        <div class="container text-center">
+            <p>Copyright 2017 &copy; CMP Geeks Team</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("joinBoardbutton").onclick = function (){
+            var urLstr = document.getElementById("myURL").value;
+            if (urLstr == "" || urLstr.indexOf("drawboard") == -1)
+            { alert("Please type the DrawBoard url"); }
+            else {
+                window.location.href = document.getElementById("myURL").value;
+
+            }
+        }
+    </script>
+
+</body>

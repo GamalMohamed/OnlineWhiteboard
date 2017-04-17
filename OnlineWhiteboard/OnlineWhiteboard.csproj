@@ -343,7 +343,9 @@
     <Content Include="Content\bootstrapStyle.less" />
     <Content Include="Content\site.less" />
     <Content Include="Content\styles.less" />
+    <Content Include="Content\grayscale.less" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\App\grayscale.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -378,7 +380,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\BoardCreationPartial.cshtml" />
     <Content Include="Views\Shared\BoardError.cshtml" />
     <Content Include="Views\Sheet\Messenger.cshtml" />
     <Content Include="Views\Sheet\Sheet.cshtml" />
