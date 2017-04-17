@@ -21,37 +21,43 @@
             <div id="tools">
                 <div class="buttonGroup" id="drawer">
                     <div class="iconButton">
-                        <i class="fa fa-pencil"></i>
-                    </div> pencil
+                        <i class="fa fa-paint-brush" "></i>
+                    </div> Paint
                 </div>
                 <div class="buttonGroup" id="eraser">
                     <div class="iconButton">
                         <i class="fa fa-eraser"></i>
-                    </div> eraser
+                    </div>
+                    Eraser
                 </div>
             </div>
             <div id="options">
                 <div class="buttonGroup" id="colors">
                     <div class="iconButton">
-                        <i class="fa fa-tint"></i>
-                    </div> colors
+                        <i class="fa fa-eyedropper"></i>
+                    </div> Colors
                 </div>
                 <div class="buttonGroup" id="thickness">
                     <div class="iconButton">
                         <i class="fa fa-sliders"></i>
-                    </div>size
+                    </div>Scale
+                </div>
+                <div class="buttonGroup" id="snapshot">
+                    <div class="iconButton">
+                        <i class="fa fa-camera"></i>
+                    </div>Snapshot
                 </div>
                 <div class="buttonGroup" id="clear">
                     <div class="iconButton">
-                        <i class="fa fa-times"></i>
-                    </div>clear
+                        <i class="fa fa-trash"></i>
+                    </div>Clear
                 </div>
             </div>
             <div class="buttonGroup" id="help">
                 <a href="/home/help">
                     <div class="iconButton">
-                        <i class="fa fa-question"></i>
-                    </div>help
+                        <i class="fa fa-question-circle"></i>
+                    </div>Help
                 </a>
             </div>
         </div>
@@ -66,20 +72,29 @@
         <div id="disconnectedBlind" class="blind"><div id="disconnectedText">You were disconnected due to a network error. <br /> Refresh the page to reconnect.</div></div>
         @Html.Partial("Messenger")
 
-        <script>
-        var boardId = "@ViewBag.BoardId";
-
-        var preventScroll = function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        };
-
-        document.body.addEventListener("scroll", preventScroll);
-        document.body.addEventListener("touchmove", preventScroll);
-        document.body.addEventListener("mousewheel", preventScroll);
-        </script>
     </div>
+
+    <script>
+            var boardId = "@ViewBag.BoardId";
+
+            var preventScroll = function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            };
+            document.body.addEventListener("scroll", preventScroll);
+            document.body.addEventListener("touchmove", preventScroll);
+            document.body.addEventListener("mousewheel", preventScroll);
+
+            document.getElementById("snapshot").onclick = function () {
+                var link = document.createElement('a');
+                link.href = document.getElementById("finalDrawCanvas").toDataURL("image/png");
+                link.download = 'Drawing.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+    </script>
 
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")

@@ -351,7 +351,7 @@ class Chat {
             this.appendChatMessage(message);
         });
 
-        this.appendNotification(format("Welcome, %s!", app.user.displayName), NotificationType.Info);
+        this.appendNotification(format("Welcome, %s!\n(you can click on chat icon to change ur name..)", app.user.displayName), NotificationType.Info);
     }
 
     public onUserConnect(user: UserInfo): void {

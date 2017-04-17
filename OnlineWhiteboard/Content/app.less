@@ -1,10 +1,10 @@
 ﻿#board.page {
     overflow: hidden;
 
-    @mainColor: #d3c9ff;
-    @darkerMainColor: #698ab1;
-    @darkestMainColor: #537198;
-    @superDarkMainColor: #2d3640;
+    @mainColor: #0053ff;
+    @darkerMainColor: #000aff;
+    @darkestMainColor: #4400ff;
+    @superDarkMainColor: #4400ff;
     @lighterMainColor: #aecdf2;
     @lightestMainColor: #c9e2ff;
     @accentColor: #ffd800;
@@ -99,13 +99,18 @@
     @toolboxMargin: 2px;
     @toolboxIconSize: 15pt;
     @toolTitleSize: 15px;
-    @toolBoxWidth: 6 * @toolboxItemWidth + 2 * @toolboxMargin;
+    @toolBoxWidth: 7 * @toolboxItemWidth + 2 * @toolboxMargin;
+
+    .Border {
+        border-radius: 15px;
+    }
 
     #toolbox {
         .noSelect;
         .bigShadow;
+        .Border;
         position: absolute;
-        top: 15px;
+        top: 10px;
         left: ~"calc(50vw - @{toolBoxWidth} / 2)";
         width: @toolBoxWidth;
         height: @toolboxItemHeight + 3 * @toolboxMargin + @toolTitleSize;
@@ -133,6 +138,7 @@
         text-align: center;
         font-size: 8pt;
         font-family: 'Droid Sans', sans-serif;
+        font-weight:bold;
 
         a {
             text-decoration: none;
@@ -152,15 +158,18 @@
 
     .buttonGroup:hover {
         background-color: @darkerMainColor;
+        .Border;
     }
 
     .buttonGroup:active {
         background-color: @darkestMainColor;
+        .Border;
     }
 
     .buttonGroup.selected {
         background-color: @superDarkMainColor;
         color: white;
+        .Border;
     }
 
     .toolButton {
@@ -419,7 +428,7 @@
         box-sizing: content-box;
         width: 150px;
         height: 150px;
-        background-color: #586572;
+        background-color: white;
         display: flex;
         flex-wrap: wrap;
         overflow: hidden;
@@ -441,7 +450,7 @@
 
     #thicknessPicker {
         .noSelect;
-        background-color: #586572;
+        background-color: #0053ff;
         position: absolute;
         width: 200px;
         height: 50px;
