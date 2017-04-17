@@ -1,7 +1,7 @@
 ﻿#board.page {
     overflow: hidden;
 
-    @mainColor: #779ecb;
+    @mainColor: #d3c9ff;
     @darkerMainColor: #698ab1;
     @darkestMainColor: #537198;
     @superDarkMainColor: #2d3640;
@@ -47,29 +47,14 @@
         display: flex;
     }
 
-    @canvasWidth: 1000px;
-    @canvasHeight: 700px;
+    @canvasWidth: 100vw;
+    @canvasHeight: 100vh;
 
     .canvasType {
         cursor: inherit;
         position: absolute;
-        top: 0;
-        left: 0;
         width: @canvasWidth;
         height: @canvasHeight;
-    }
-
-    #canvasContainer {
-        .bigShadow;
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: ~"calc(@{canvasWidth} / -2)";
-        margin-top: ~"calc(@{canvasHeight} / -2)";
-        width: @canvasWidth;
-        height: @canvasHeight;
-        background-color: white;
     }
 
     #bufferContainer {
@@ -82,7 +67,7 @@
         }
     }
 
-    #finalDrawCanvas, #drawCanvas {
+    #finalDrawCanvas {
         .canvasType;
     }
 
@@ -478,14 +463,5 @@
 
     #thicknessPicker.hidden {
         display: none;
-    }
-
-    #canvasBackground {
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        background-color: #3f4953;
     }
 }

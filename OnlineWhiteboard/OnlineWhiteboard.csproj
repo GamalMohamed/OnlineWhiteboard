@@ -186,7 +186,7 @@
     <Compile Include="App_Start\LessTransform.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SheetController.cs" />
+    <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -381,8 +381,8 @@
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\BoardError.cshtml" />
-    <Content Include="Views\Sheet\Messenger.cshtml" />
-    <Content Include="Views\Sheet\Sheet.cshtml" />
+    <Content Include="Views\Board\Messenger.cshtml" />
+    <Content Include="Views\Board\Board.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

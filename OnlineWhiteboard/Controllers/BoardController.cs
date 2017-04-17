@@ -7,9 +7,9 @@ using OnlineWhiteboard.Models;
 
 namespace OnlineWhiteBoard.Controllers
 {
-    public class SheetController : Controller
+    public class BoardController : Controller
     {
-        [Route("Sheet/{id}")]
+        [Route("Board/{id}")]
         [HttpGet]
         public ActionResult Id(string id)
         {
@@ -17,7 +17,7 @@ namespace OnlineWhiteBoard.Controllers
 
             if (!BoardManager.BoardExists(id))
             {
-                ViewBag.ErrorMessage = "No such sheet exists";
+                ViewBag.ErrorMessage = "No such Board exists!";
 
                 return View("BoardError");
             }
@@ -28,18 +28,18 @@ namespace OnlineWhiteBoard.Controllers
             {
                 if (AuthManager.IsUserAuthenticated(Session.SessionID, id))
                 {
-                    return View("Sheet");
+                    return View("Board");
                 }
             }
             else
             {
-                return View("Sheet");
+                return View("Board");
             }
 
-            return new RedirectResult("/password/Sheet/" + id);
+            return new RedirectResult("/password/board/" + id);
         }
 
-        [Route("Sheet/Create")]
+        [Route("Board/Create")]
         [HttpPost]
         public ActionResult NewBoard([Bind(Include = "Title")]BoardModel model)
         {
@@ -49,7 +49,7 @@ namespace OnlineWhiteBoard.Controllers
 
                 AuthManager.AuthenticateUser(Session.SessionID, id);
 
-                return new RedirectResult("/Sheet/" + id);
+                return new RedirectResult("/Board/" + id);
             }
 
             ViewBag.ErrorMessage = "The parameters for creating the board were incorrect";

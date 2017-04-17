@@ -29,7 +29,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">DrawBoard</h1>
                         <p class="intro-text">An online Shared whiteboard application</p>
-                        <form action="/Sheet/Create" method="post">
+                        <form action="/Board/Create" method="post">
                             <button id="createBoardbutton" type="submit" class="btn btn-primary btn-lg">Start a drawing room</button>
                         </form>
                         <br />
@@ -51,17 +51,4 @@
             <p>Copyright 2017 &copy; CMP Geeks Team</p>
         </div>
     </footer>
-
-    <script>
-        document.getElementById("joinBoardbutton").onclick = function (){
-            var urLstr = document.getElementById("boardUrl").value;
-            if (urLstr !== "") {
-                window.location.href = document.getElementById("boardUrl").value;
-            }
-            else {
-                alert("Please type the DrawBoard url");
-            }
-        }
-    </script>
-
 </body>
