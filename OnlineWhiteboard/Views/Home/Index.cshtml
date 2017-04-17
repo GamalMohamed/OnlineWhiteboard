@@ -35,8 +35,8 @@
                         <br />
                         <br />
                         <p class="intro-text">Or Join an existing one</p>
-                        <form id="regexpForm" class="form-horizontal">
-                            <input id="myURL" class="form-control input-sm roundbox20" type="text" placeholder="Enter board URL" name="url" />
+                        <form class="form-horizontal">
+                            <input id="boardUrl" class="form-control roundbox20" type="text" placeholder="Enter board URL" name="url" />
                             <br />
                             <button id="joinBoardbutton" type="button" class="btn btn-primary btn-lg">Join room</button>
                         </form>
@@ -54,12 +54,12 @@
 
     <script>
         document.getElementById("joinBoardbutton").onclick = function (){
-            var urLstr = document.getElementById("myURL").value;
-            if (urLstr == "" || urLstr.indexOf("drawboard") == -1)
-            { alert("Please type the DrawBoard url"); }
+            var urLstr = document.getElementById("boardUrl").value;
+            if (urLstr !== "") {
+                window.location.href = document.getElementById("boardUrl").value;
+            }
             else {
-                window.location.href = document.getElementById("myURL").value;
-
+                alert("Please type the DrawBoard url");
             }
         }
     </script>
