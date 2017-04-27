@@ -19,10 +19,6 @@ class Chat {
     private $messageInput: JQuery; // input element where the user types in messages
     private $messengerVisibileToggle: JQuery; // element which when clicked toggles the visiblity of the chat messenger
     private $messenger: JQuery; // the parent element which contains all messenger elements
-    private $latexPreviewModal: JQuery; // modal element which contains latex preview 
-    private $latexModalToggle: JQuery; // element that toggles the modal which contains the latex preview
-    private $latexInput: JQuery; // the input element inside the latex rendering modal which is used as input for latex rendering
-    private $latexOutput: JQuery; // the element which contains rendered latex 
     private $nameChangeModal: JQuery;
     private $nameChangeInput: JQuery;
     private $nameChangeToggle: JQuery;
@@ -46,10 +42,6 @@ class Chat {
         this.$messageInput = $("#messageInput");
         this.$messengerVisibileToggle = $("#switchButton");
         this.$messenger = $("#messenger");
-        this.$latexPreviewModal = $("#latexModal");
-        this.$latexModalToggle = $("#latexInputButton");
-        this.$latexInput = $("#latexInput");
-        this.$latexOutput = $("#renderedText");
         this.$nameChangeModal = $("#nameChangeModal");
         this.$nameChangeInput = $("#nameChangeInput");
         this.$nameChangeToggle = $("#nameChangeToggle");
@@ -63,11 +55,8 @@ class Chat {
         this.$messageInput.focus(e => { this.onMessengerFocus(e); });
         this.$messenger.click(e => { this.onMessengerClick(e); });
         this.$messengerTopBar.click(e => { this.onTopBarClick(e); });
-        this.$latexModalToggle.click(e => { this.onLatexModalToggle(e); });
-        this.$latexInput.keyup(e => { this.onLatexModalKeyUp(e); });
         this.$nameChangeToggle.click(e => { this.onNameChangeToggle(e); });
         this.$saveNameButton.click(e => { this.onSaveNameClick(e); });
-        $("#latexSave").click(e => { this.onLatexSaveClick(e); });
         setInterval(() => { this.onMessageFlash(); }, this.messengerFlashLength);
         this.app.hub.client.addMessage = (message: Message) => { this.onMessage(message); };
         this.app.hub.client.onNameChange = (oldName: string, newName: string) => { this.onNameChange(oldName, newName); };
@@ -139,28 +128,6 @@ class Chat {
 
             this.hidden = !this.hidden;
         }
-    }
-
-    private onLatexModalToggle(e: JQueryMouseEventObject) {
-        this.$latexInput.val(this.$messageInput.val());
-
-        this.updateRenderedLatex();
-
-        this.$latexPreviewModal.modal("show");
-    }
-
-    private onLatexModalKeyUp(e: JQueryKeyEventObject) {
-        this.updateRenderedLatex();
-    }
-
-    private onLatexSaveClick(e: JQueryMouseEventObject) {
-        this.$messageInput.val(this.$latexInput.val());
-
-        this.$latexPreviewModal.modal("hide");
-
-        this.$latexInput.val("");
-
-        this.updateRenderedLatex();
     }
 
     private onNameChangeToggle(e: JQueryMouseEventObject) {
@@ -330,16 +297,6 @@ class Chat {
         catch (e) {
             return e.message;
         }
-    }
-
-    public updateRenderedLatex(): void {
-        var $input = this.$latexInput;
-        var $output = this.$latexOutput;
-
-        var text = $input.val();
-        var html = this.convertStringToHtml(text);
-
-        $output.html(html);
     }
 
     public initializeFromSnapshot(snapshot: BoardSnapshot): void {

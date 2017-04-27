@@ -344,6 +344,7 @@
     <Content Include="Content\site.less" />
     <Content Include="Content\styles.less" />
     <Content Include="Content\grayscale.less" />
+    <None Include="Properties\PublishProfiles\CrazyBoard - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\App\grayscale.js" />
     <Content Include="Scripts\bootstrap.js" />

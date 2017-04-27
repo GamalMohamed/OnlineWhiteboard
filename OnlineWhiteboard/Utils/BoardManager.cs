@@ -11,13 +11,13 @@ namespace OnlineWhiteBoard
     {
         private static List<Board> boards;
         private static Random random;
-        private static Dictionary<string, IDisposable> deletionCancelationObjects;
+        private static Dictionary<string, IDisposable> _deletionCancelationObjects;
 
         static BoardManager()
         {
             boards = new List<Board>();
             random = new Random();
-            deletionCancelationObjects = new Dictionary<string, IDisposable>();
+            _deletionCancelationObjects = new Dictionary<string, IDisposable>();
         }
 
 #if DEBUG
@@ -59,7 +59,7 @@ namespace OnlineWhiteBoard
 
         public static bool IsBoardScheduledForDeletion(string boardId)
         {
-            return deletionCancelationObjects.ContainsKey(boardId);
+            return _deletionCancelationObjects.ContainsKey(boardId);
         }
 
         public static void DeleteBoard(string boardId)
@@ -79,19 +79,19 @@ namespace OnlineWhiteBoard
 
         public static void ScheduleBoardDeletion(TimeSpan waitTime, string boardId)
         {
-            if (!deletionCancelationObjects.ContainsKey(boardId))
+            if (!_deletionCancelationObjects.ContainsKey(boardId))
             {
                 var cancel = ThreadPoolScheduler.Instance.Schedule(new DateTimeOffset(DateTime.UtcNow.Add(waitTime)), () =>
                 {
                     DeleteBoard(boardId);
 
-                    if (deletionCancelationObjects.ContainsKey(boardId))
+                    if (_deletionCancelationObjects.ContainsKey(boardId))
                     {
-                        deletionCancelationObjects.Remove(boardId);
+                        _deletionCancelationObjects.Remove(boardId);
                     }
                 });
 
-                deletionCancelationObjects.Add(boardId, cancel);
+                _deletionCancelationObjects.Add(boardId, cancel);
             }
             else
             {
@@ -101,11 +101,11 @@ namespace OnlineWhiteBoard
 
         public static void CancelBoardDeletion(string boardId)
         {
-            if (deletionCancelationObjects.ContainsKey(boardId))
+            if (_deletionCancelationObjects.ContainsKey(boardId))
             {
-                deletionCancelationObjects[boardId].Dispose();
+                _deletionCancelationObjects[boardId].Dispose();
 
-                deletionCancelationObjects.Remove(boardId);
+                _deletionCancelationObjects.Remove(boardId);
             }
             else
             {

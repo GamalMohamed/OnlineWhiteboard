@@ -87,12 +87,22 @@
             document.body.addEventListener("mousewheel", preventScroll);
 
             document.getElementById("snapshot").onclick = function () {
-                var link = document.createElement('a');
-                link.href = document.getElementById("finalDrawCanvas").toDataURL("image/png");
-                link.download = 'Drawing.png';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                var canvas = document.getElementById("finalDrawCanvas");
+                var ie = document.documentMode;
+                if ((ie >= 9 && ie <= 12) || window.navigator.userAgent.indexOf("Edge") > -1){
+                    var blob = canvas.msToBlob();
+                    window.navigator.msSaveBlob(blob, 'Drawing area.png');
+                }
+                else {
+                    var img = canvas.toDataURL("image/png");
+
+                    var link = document.createElement('a');
+                    link.href = img;
+                    link.download = "Drawing area.png";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
             }
     </script>
 

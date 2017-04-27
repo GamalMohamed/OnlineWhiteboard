@@ -19,10 +19,6 @@ var Chat = (function () {
         this.$messageInput = $("#messageInput");
         this.$messengerVisibileToggle = $("#switchButton");
         this.$messenger = $("#messenger");
-        this.$latexPreviewModal = $("#latexModal");
-        this.$latexModalToggle = $("#latexInputButton");
-        this.$latexInput = $("#latexInput");
-        this.$latexOutput = $("#renderedText");
         this.$nameChangeModal = $("#nameChangeModal");
         this.$nameChangeInput = $("#nameChangeInput");
         this.$nameChangeToggle = $("#nameChangeToggle");
@@ -33,11 +29,8 @@ var Chat = (function () {
         this.$messageInput.focus(function (e) { _this.onMessengerFocus(e); });
         this.$messenger.click(function (e) { _this.onMessengerClick(e); });
         this.$messengerTopBar.click(function (e) { _this.onTopBarClick(e); });
-        this.$latexModalToggle.click(function (e) { _this.onLatexModalToggle(e); });
-        this.$latexInput.keyup(function (e) { _this.onLatexModalKeyUp(e); });
         this.$nameChangeToggle.click(function (e) { _this.onNameChangeToggle(e); });
         this.$saveNameButton.click(function (e) { _this.onSaveNameClick(e); });
-        $("#latexSave").click(function (e) { _this.onLatexSaveClick(e); });
         setInterval(function () { _this.onMessageFlash(); }, this.messengerFlashLength);
         this.app.hub.client.addMessage = function (message) { _this.onMessage(message); };
         this.app.hub.client.onNameChange = function (oldName, newName) { _this.onNameChange(oldName, newName); };
@@ -94,20 +87,6 @@ var Chat = (function () {
             }
             this.hidden = !this.hidden;
         }
-    };
-    Chat.prototype.onLatexModalToggle = function (e) {
-        this.$latexInput.val(this.$messageInput.val());
-        this.updateRenderedLatex();
-        this.$latexPreviewModal.modal("show");
-    };
-    Chat.prototype.onLatexModalKeyUp = function (e) {
-        this.updateRenderedLatex();
-    };
-    Chat.prototype.onLatexSaveClick = function (e) {
-        this.$messageInput.val(this.$latexInput.val());
-        this.$latexPreviewModal.modal("hide");
-        this.$latexInput.val("");
-        this.updateRenderedLatex();
     };
     Chat.prototype.onNameChangeToggle = function (e) {
         this.$nameChangeModal.modal("show");
@@ -226,13 +205,6 @@ var Chat = (function () {
         catch (e) {
             return e.message;
         }
-    };
-    Chat.prototype.updateRenderedLatex = function () {
-        var $input = this.$latexInput;
-        var $output = this.$latexOutput;
-        var text = $input.val();
-        var html = this.convertStringToHtml(text);
-        $output.html(html);
     };
     Chat.prototype.initializeFromSnapshot = function (snapshot) {
         var _this = this;

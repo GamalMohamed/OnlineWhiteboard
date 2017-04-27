@@ -47,8 +47,8 @@
         display: flex;
     }
 
-    @canvasWidth: 100vw;
-    @canvasHeight: 100vh;
+    @canvasWidth: 3000px;
+    @canvasHeight: 3000px;
 
     .canvasType {
         cursor: inherit;
@@ -138,7 +138,7 @@
         text-align: center;
         font-size: 8pt;
         font-family: 'Droid Sans', sans-serif;
-        font-weight:bold;
+        font-weight: bold;
 
         a {
             text-decoration: none;
@@ -191,7 +191,7 @@
     @messengerMargin: 40px;
     @messengerSwitchButtonWidth: 50px;
     @messengerTransitionTime: 500ms;
-    @latexButtonWidth: 25px;
+    @messengerButtonWidth: 25px;
 
     #messenger {
         .bigShadow;
@@ -316,7 +316,7 @@
         float: left;
         height: @inputHeight;
         outline: 0;
-        width: ~"calc(100% - @{latexButtonWidth})";
+        width: ~"calc(100% - @{messengerButtonWidth})";
         border: none;
         background-color: white;
         padding-left: 5px;
@@ -327,9 +327,9 @@
         width: 25px;
     }
 
-    #latexInputButton {
+    #messengerInputButton {
         float: left;
-        width: @latexButtonWidth;
+        width: @messengerButtonWidth;
         font-size: 13pt;
         text-align: center;
         background-color: white;
@@ -337,11 +337,11 @@
         overflow: hidden;
     }
 
-    #latexInputButton:hover {
+    #messengerInputButton:hover {
         background-color: @lightestMainColor;
     }
 
-    #latexInputButton:active {
+    #messengerInputButton:active {
         background-color: @lighterMainColor;
     }
 
@@ -391,11 +391,6 @@
         text-align: center;
     }
 
-    #latexBody {
-        width: 100%;
-        height: 300px;
-    }
-
     #normalText {
         height: 100%;
         width: 50%;
@@ -413,14 +408,6 @@
         border-bottom: 1px solid grey;
         white-space: pre-wrap;
         word-wrap: break-word;
-    }
-
-    #latexInput {
-        width: 100%;
-        height: 100%;
-        resize: none;
-        outline: none;
-        border: 1px solid grey;
     }
 
     #colorPicker {
